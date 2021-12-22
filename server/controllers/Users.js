@@ -1,4 +1,4 @@
-var { Users } = require("../models");
+var { Users, Roles } = require("../models");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
@@ -158,4 +158,47 @@ var createResponsable = async (req, res) => {
   }
 };
 
-module.exports = { createUser, loginUser, iAM, createResponsable };
+// initilisation de l'application
+var initApp = async (req, res) => {
+  try {
+    // si deja intialise
+    let exist = await Users.findAll({
+      where: {
+        email: {
+          [Op.eq]: "mgprojetweb@univ-rouen.fr",
+        },
+      },
+    });
+
+    // Si app non intialise
+    if (exist.length == 0) {
+      // Creation des roles
+      let roles = ["admin", "responsable", "usager"];
+
+      roles.map(async (role) => {
+        await Roles.create({
+          name: role,
+        });
+      });
+
+      // Creation du compte admin
+
+      let password = "Admin2021";
+
+      const salt = await bcrypt.genSalt(10);
+      let hashedPassword = await bcrypt.hash(password, salt);
+
+      let newUser = await Users.create({
+        firstName: "admin",
+        lastName: "",
+        email: "mgprojetweb@univ-rouen.fr",
+        password: hashedPassword,
+        role: "admin",
+      });
+    }
+  } catch (error) {
+    res.status(500).send("Erreur serveur");
+  }
+};
+
+module.exports = { createUser, loginUser, iAM, createResponsable, initApp };

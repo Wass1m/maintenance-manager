@@ -26,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       targetKey: "name",
     });
+
+    Users.hasMany(models.Anomalies, {
+      onDelete: "NO ACTION",
+      foreignKey: {
+        name: "userID",
+        allowNull: true,
+      },
+    });
   };
 
   return Users;

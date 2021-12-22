@@ -2,6 +2,9 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 module.exports = function (req, res, next) {
+  if (!req.header("Authorization"))
+    return res.status(401).json({ message: "No token found...", status: 401 });
+
   // Obtenir le token
   const token = req.header("Authorization").split(" ")[1];
 

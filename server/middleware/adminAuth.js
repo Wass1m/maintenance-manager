@@ -3,6 +3,10 @@ const config = require("config");
 
 module.exports = function (req, res, next) {
   // Obtenir le token
+
+  if (!req.header("Authorization"))
+    return res.status(401).json({ message: "No token found...", status: 401 });
+
   const token = req.header("Authorization").split(" ")[1];
 
   // Tester si le token est present

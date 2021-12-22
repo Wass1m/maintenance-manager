@@ -31,6 +31,8 @@ router.post(
   userController.createResponsable
 );
 
+router.post("/initA", userController.initApp);
+
 //////////
 //////////
 //////////

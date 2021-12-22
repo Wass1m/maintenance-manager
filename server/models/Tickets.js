@@ -22,6 +22,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     });
+    Tickets.belongsToMany(models.Anomalies, {
+      through: "Defaillances",
+      foreignKey: "ticketID",
+      allowNull: false,
+    });
   };
 
   return Tickets;

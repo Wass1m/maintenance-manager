@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   Anomalies.associate = (models) => {
     Anomalies.belongsToMany(models.Tickets, {
       through: "Defaillances",
+      foreignKey: "anomalyID",
+      allowNull: false,
     });
   };
 

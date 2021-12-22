@@ -15,22 +15,28 @@ var ressourceController = require("../controllers/Ressources");
 
 ////////////  CREATION RESSOURCE
 router.post("/create", respoAuth, ressourceController.createRessource);
+////////////  SUPPRESSION RESSOURCE
+router.delete(
+  "/delete/:ressourceID",
+  respoAuth,
+  ressourceController.deleteRessource
+);
 ////////////  LISTER TOUTES LES RESSOURCES D'UN RESPONSABLE
-router.post(
+router.get(
   "/getRessourcesByRespo",
   respoAuth,
   ressourceController.getRessourcesByResponsable
 );
 ////////////  OBTENIR UNE RESSOURCE PAR ID POUR UN RESPONSABLE
-router.post(
-  "/getRessourceById/:ressID",
+router.get(
+  "/getRessourceById/:ressourceID",
   respoAuth,
   ressourceController.getRessourceByID
 );
 ////////////  OBTENIR UNE RESSOURCE POUR UN UTILISATEUR PAR ID
-router.post(
-  "/signaler/:ressID",
-  respoAuth,
+router.get(
+  "/getById/:ressourceID",
+
   ressourceController.getRessourceByID
 );
 // router.post("/delete", userController.loginUser);
