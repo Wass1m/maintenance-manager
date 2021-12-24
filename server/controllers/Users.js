@@ -108,6 +108,18 @@ var loginUser = async (req, res) => {
       }
     );
   } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
+
+var getCurrentUser = async (req, res) => {
+  try {
+    let user = await Users.findByPk(req.user.id, {
+      attributes: { exclude: ["password"] },
+    });
+    return res.json({ data: user });
+  } catch (err) {
+    console.log(err);
     res.status(500).send("Erreur serveur");
   }
 };
@@ -201,4 +213,32 @@ var initApp = async (req, res) => {
   }
 };
 
-module.exports = { createUser, loginUser, iAM, createResponsable, initApp };
+// Lister les responsables
+
+var getResponsables = async (req, res) => {
+  try {
+    let users = await Users.findAll({
+      attributes: { exclude: ["password", "updatedAt"] },
+      where: {
+        role: {
+          [Op.eq]: "responsable",
+        },
+      },
+      order: [["createdAt", "DESC"]],
+    });
+
+    return res.json({ responsables: users });
+  } catch (error) {
+    res.status(500).send("Erreur serveur");
+  }
+};
+
+module.exports = {
+  createUser,
+  loginUser,
+  iAM,
+  createResponsable,
+  initApp,
+  getCurrentUser,
+  getResponsables,
+};

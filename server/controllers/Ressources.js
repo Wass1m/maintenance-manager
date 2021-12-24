@@ -16,7 +16,7 @@ var createRessource = async (req, res) => {
 
     return res.json({ ressource });
   } catch (error) {
-    res.status(500).send("Erreur serveur");
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
@@ -30,7 +30,7 @@ var deleteRessource = async (req, res) => {
 
     return res.json({ message: "Ressource supprimee", ressource });
   } catch (error) {
-    res.status(500).send("Erreur serveur");
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
@@ -61,7 +61,7 @@ var getRessourcesByResponsable = async (req, res) => {
 
     return res.json({ allRessources });
   } catch (error) {
-    res.status(500).send("Erreur serveur");
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
@@ -84,7 +84,7 @@ var getRessourceByID = async (req, res) => {
 
     return res.json({ ...newRessources });
   } catch (error) {
-    res.status(500).send("Erreur serveur");
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
 

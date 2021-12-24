@@ -5,7 +5,9 @@ const router = express.Router();
 const userAuth = require("../middleware/userAuth");
 // MIDDLEWARE DE PERMISSION ADMINISTRATEUR
 const adminAuth = require("../middleware/adminAuth");
-// MIDDLEWARE DE PERMISSION UTILISATEUR
+
+// MIDDLEWARE UTILISATEUR COURANT
+const currentAuth = require("../middleware/currentAuth");
 
 // CONTROLLEUR UTILISATEURS
 var userController = require("../controllers/Users");
@@ -31,6 +33,10 @@ router.post(
   userController.createResponsable
 );
 
+router.get("/admin/getResponsables", adminAuth, userController.getResponsables);
+
+////// INTIALISATION DE L'APPLICATION
+
 router.post("/initA", userController.initApp);
 
 //////////
@@ -42,6 +48,9 @@ router.post("/initA", userController.initApp);
 router.post("/responsable/login", userAuth, userController.iAM);
 
 ////////////  ROUTE D'AUTHENTIFICATION ADMIN
+
+////////////  OBTENTION DE L'UTILISATEUR ACTUEL SUIVANT LE TOKEN
+router.get("/me", currentAuth, userController.getCurrentUser);
 
 // Exporting Routes
 module.exports = router;
