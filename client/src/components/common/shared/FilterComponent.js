@@ -29,12 +29,12 @@ const ClearButton = styled.button`
   justify-content: center;
 `;
 
-const FilterComponent = ({ filterText, onFilter, onClear }) => (
+const FilterComponent = ({ filterText, onFilter, onClear, filterMessage }) => (
   <>
     <Input
       id="search"
       type="text"
-      placeholder="Rentrer un filtrer..."
+      placeholder={filterMessage}
       value={filterText}
       onChange={onFilter}
     />

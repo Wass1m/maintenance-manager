@@ -19,7 +19,7 @@ const Header = ({ auth, logoutUser }) => {
         {/* <h1 className="inicio-text">Inicio Project</h1> */}
       </div>
       {auth.isAuthenticated && auth.user != null ? (
-        <div className="welcone-name">
+        <div className="welcome-name">
           <h1>{auth.user.firstName + " " + auth.user.lastName} </h1>
         </div>
       ) : (

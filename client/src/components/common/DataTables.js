@@ -5,6 +5,8 @@ const DataTables = ({ data, headers, mainTab, secondaryTab }) => {
   if (!mainTab && !secondaryTab) {
     const columns = data[0] && Object.keys(data[0]);
 
+    console.log(columns);
+
     return (
       <table cellPadding={0} cellSpacing={0}>
         <thead>
@@ -22,6 +24,12 @@ const DataTables = ({ data, headers, mainTab, secondaryTab }) => {
                   <td key={index + 20}>
                     {moment(row[column]).format("DD/MM/YYYY")}
                   </td>
+                ) : column == "solved" ? (
+                  row[column] == 1 ? (
+                    <p className="success">Resolu</p>
+                  ) : (
+                    <p className="pending">En Cours</p>
+                  )
                 ) : (
                   <td key={index + 20}>{row[column]}</td>
                 )

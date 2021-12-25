@@ -30,7 +30,7 @@ router.get(
 ////////////  OBTENIR UNE RESSOURCE PAR ID POUR UN RESPONSABLE
 router.get(
   "/getRessourceById/:ressourceID",
-  respoAuth,
+
   ressourceController.getRessourceByID
 );
 ////////////  OBTENIR UNE RESSOURCE POUR UN UTILISATEUR PAR ID
@@ -38,6 +38,12 @@ router.get(
   "/getById/:ressourceID",
 
   ressourceController.getRessourceByID
+);
+
+router.get(
+  "/getAll",
+
+  ressourceController.getAllRessources
 );
 // router.post("/delete", userController.loginUser);
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  GET_ONE_RESSOURCE,
   GET_RESSOURCES,
   GET_RESSOURCES_FAIL,
   LOADING_RESPO,
@@ -90,6 +91,71 @@ export const deleteRessource = (ressourceID) => async (dispatch) => {
     await axiosInstance.delete(`/ressources/delete/${ressourceID}`, {}, config);
 
     dispatch(getRessources());
+  } catch (error) {
+    dispatch({
+      type: GET_RESSOURCES_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const getRessourcesById = (ressourceID) => async (dispatch) => {
+  axiosInstance.interceptors.request.use(function (config) {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    return config;
+  });
+
+  const config = {
+    header: { "content-type": "application/json" },
+  };
+
+  try {
+    dispatch({
+      type: LOADING_RESPO,
+    });
+
+    const res = await axiosInstance.get(
+      `/ressources/getRessourceById/${ressourceID}`,
+      config
+    );
+
+    console.log(res.data);
+
+    dispatch({
+      type: GET_ONE_RESSOURCE,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_RESSOURCES_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const getAllRessources = () => async (dispatch) => {
+  axiosInstance.interceptors.request.use(function (config) {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    return config;
+  });
+
+  const config = {
+    header: { "content-type": "application/json" },
+  };
+
+  try {
+    dispatch({
+      type: LOADING_RESPO,
+    });
+
+    const res = await axiosInstance.get("/ressources/getAll", config);
+
+    dispatch({
+      type: GET_RESSOURCES,
+      payload: res.data,
+    });
   } catch (error) {
     dispatch({
       type: GET_RESSOURCES_FAIL,

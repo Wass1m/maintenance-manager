@@ -1,10 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import Loading from "../components/common/Loading";
 
-const AdminRoute = ({ auth: { isAuthenticated, role, loading, user } }) => {
-  return user == null ? (
-    <></>
+const AdminRoute = ({
+  auth: { isAuthenticated, role, loading, user, token },
+}) => {
+  return token == null ? (
+    <Navigate to="/" />
+  ) : loading ? (
+    <Loading />
+  ) : user == null ? (
+    <Loading />
   ) : isAuthenticated && !loading && role == "admin" ? (
     <Outlet />
   ) : (

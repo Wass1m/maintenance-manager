@@ -12,7 +12,13 @@ import ManageResponsables from "./components/admin/manage/ManageResponsables";
 import AdminRoute from "./routes/AdminRoute";
 import RespoRoute from "./routes/RespoRoute";
 import ManageRessources from "./components/responsable/ressources/ManageRessources";
-
+import Ressource from "./components/responsable/ressources/Ressource";
+import AllRessources from "./components/usager/AllRessources";
+import SignalRessource from "./components/usager/SignalRessource";
+import { ToastContainer, toast } from "react-toastify";
+import ManageTickets from "./components/responsable/tickets/ManageTickets";
+import Ticket from "./components/responsable/tickets/Ticket";
+import PageQR from "./components/responsable/ressources/PageQR";
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -22,6 +28,7 @@ function App() {
       <Router>
         <div className="App">
           <Header />
+          <ToastContainer />
           <Routes>
             <Route path="/admin" element={<AdminRoute />}>
               <Route element={<HomePage />} />
@@ -35,14 +42,30 @@ function App() {
               />
               <Route
                 path="/responsable/manage/ressources/:ressourceID"
-                element={<HomePage />}
+                element={<Ressource />}
+              />
+
+              <Route
+                path="/responsable/manage/tickets"
+                element={<ManageTickets />}
+              />
+
+              <Route
+                path="/responsable/manage/tickets/:ticketID"
+                element={<Ticket />}
+              />
+
+              <Route
+                path="/responsable/manage/ressources/generateQR/:ressourceID"
+                element={<PageQR />}
               />
             </Route>
-            {/* <Route  path="/admin/manage" element={<AdminRoute />}>
-              <Route element={<ManageResponsables />} />
-            </Route> */}
 
-            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/" element={<AllRessources />} />
+            <Route
+              path="/signaler/:ressourceID"
+              element={<SignalRessource />}
+            />
             <Route path="/register" element={<RegisterUser />} />
             <Route path="/login" element={<LoginUser />} />
           </Routes>

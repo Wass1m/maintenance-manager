@@ -29,7 +29,7 @@ const LoginUser = ({ auth, loginUser }) => {
 
   return (
     <div className="login-wrapper">
-      <div className="container flex center pt-32">
+      <div className="container auth flex center pt-32 ">
         <main>
           <div className="text -align-center mb-48">
             <h1 className="">Identifiez-Vous</h1>

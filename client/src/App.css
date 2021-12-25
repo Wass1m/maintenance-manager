@@ -16,6 +16,18 @@ body {
   justify-content: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.success {
+  color: green;
+}
+
+.pending {
+  color: orange;
+}
+
 /* BOUTONS */
 
 .button {
@@ -108,6 +120,19 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 680px) {
+  .app-header {
+    flex-wrap: wrap;
+    height: 300px;
+  }
+  .header-menu {
+    display: block;
+  }
+  .header-menu li {
+    margin-bottom: 10px;
+  }
+}
+
 /* AUTHENTIFICATION */
 
 .login-wrapper {
@@ -144,6 +169,10 @@ body {
   justify-content: center;
 }
 
+.login-wrapper .container.auth {
+  height: 40vh;
+}
+
 @media screen and (max-width: 900px) {
   .login-wrapper {
     height: 100%;
@@ -153,7 +182,8 @@ body {
   }
 }
 
-.login-wrapper input {
+.login-wrapper input,
+.signal-form input {
   border: 2px solid var(--primary-color);
   border-radius: 5px;
   height: 40px;
@@ -196,6 +226,12 @@ label {
   font-weight: 400;
   line-height: 1.25;
   margin-top: 8px;
+}
+
+.check-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
 /* TABLEAUX DE DONNEES */
@@ -254,12 +290,270 @@ td {
   background-color: rgb(0, 0, 0, 0.1);
 }
 
-.modal .container {
+.modal .container.ressource {
   height: 40vh;
 }
 
-/* TICKET */
+/* UNE RESSOURCE */
+
+.main-ressource {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.ressource-container {
+  margin-top: 20px;
+  max-width: 800px;
+  border: 5px solid var(--primary-color);
+  border-radius: 10px;
+  height: 70vh;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ressource-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ressource-image {
+  display: flex;
+  justify-content: center;
+}
+
+.ressource-image img {
+  height: 150px;
+  width: 150px;
+}
+
+.staticQR img {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.anomalies {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 20px;
+  max-width: 600px;
+  /* width: 600px; */
+  height: 300px;
+  /* background-color: green; */
+}
+
+.anomalies-list {
+  height: 250px;
+  /* background-color: red; */
+  overflow: scroll;
+}
+
+.anomalies-list > li {
+  /* list-style: none; */
+  margin-bottom: 10px;
+}
+
+.localisation {
+  color: grey;
+}
+
+/* USER RESSOURCES */
+
+.user-ressources {
+  display: flex;
+  flex-direction: column;
+}
+
+.ressources-list {
+  display: flex;
+  margin: 30px;
+}
+
+.ressource-card {
+  cursor: pointer;
+  height: 250px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.ressource-card:hover {
+  /* background: #eee; */
+  box-shadow: 0 8px 8px -4px var(--primary-color);
+}
+
+.card-header {
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-footer {
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-ressources .card-image img {
+  height: 100px;
+  width: 100px;
+}
+
+.user-ressources .card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.filter {
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* TICKETS */
 
 .ticket-li {
   color: orange !important;
+}
+
+.signal-ressource {
+  display: flex;
+  justify-content: center;
+}
+
+.signal-container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  max-width: 800px;
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
+}
+
+.signal-form {
+  margin: 20px 0;
+}
+
+.signal-ressource .anomalies-list {
+  height: 200px;
+}
+
+.signal-ressource .anomalies {
+  height: 250px;
+}
+
+@media (max-width: 680px) {
+  .signal-container {
+    width: 340px;
+  }
+}
+
+@media (max-width: 350px) {
+  .signal-container {
+    width: 300px;
+  }
+
+  .signal-container ul {
+    padding-left: 0;
+  }
+
+  .signal-form input {
+    width: 200px;
+  }
+  .signal-form .field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcome-name {
+    display: none;
+  }
+}
+
+/* QR PAGE */
+
+.qr-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.qr-container {
+  margin-top: 40px;
+  width: 426.79pt;
+  height: 119.5pt;
+
+  border: 4px solid black;
+  border-radius: 10px;
+}
+
+.qr-content {
+  display: flex;
+  margin: 5px;
+}
+
+.qr-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 5px;
+}
+
+.qr-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.qr-text h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.qr-text h4 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.qr-url {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.print-me {
+  margin-top: 20px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+@media print {
+  .app-header {
+    display: none;
+  }
+  .print-me {
+    display: none;
+  }
+  #my-qr {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }

@@ -21,7 +21,7 @@ const AddRessource = ({
 
   return (
     <div className="login-wrapper">
-      <div onOutS className="container flex center pt-32">
+      <div className="container ressource flex center pt-32">
         <main>
           <div className="text -align-center mb-48">
             <h1 className="">Ajouter une ressource</h1>

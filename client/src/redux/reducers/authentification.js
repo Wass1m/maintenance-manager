@@ -14,6 +14,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   error: null,
   role: "",
+  disconnected: false,
 };
 
 export default function (state = initialState, action) {
@@ -74,7 +75,9 @@ export default function (state = initialState, action) {
         loading: false,
         isAuthenticated: false,
         error: null,
+        token: null,
         role: "",
+        disconnected: true,
       };
     // case LOGIN_SUCCESS:
     //   localStorage.setItem("token", payload.token);

@@ -88,9 +88,35 @@ var getRessourceByID = async (req, res) => {
   }
 };
 
+var getAllRessources = async (req, res) => {
+  try {
+    var allRessources = [];
+
+    let ressources = await Ressources.findAll({});
+
+    await Promise.all(
+      ressources.map(async (ress) => {
+        let anomalies = await Anomalies.findAll({
+          where: {
+            ressourceID: {
+              [Op.eq]: ress.id,
+            },
+          },
+        });
+        allRessources.unshift({ ressource: ress, anomalies });
+      })
+    );
+
+    return res.json({ allRessources });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
+
 module.exports = {
   createRessource,
   getRessourcesByResponsable,
   getRessourceByID,
   deleteRessource,
+  getAllRessources,
 };

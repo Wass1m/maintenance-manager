@@ -4,7 +4,7 @@ import FilterComponent from "./shared/FilterComponent";
 
 // Ce composant reutiliasble permet d'obtenir un tableau de donnees ayant une pagination et une filtrage
 
-const PagedTable = ({ columns, data }) => {
+const PagedTable = ({ columns, data, type }) => {
   // useState pour le filtre
   const [filterText, setFilterText] = useState("");
   // useState pour le reset de la pagination
@@ -40,6 +40,11 @@ const PagedTable = ({ columns, data }) => {
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
         filterText={filterText}
+        filterMessage={
+          type == "ressource"
+            ? "Description, Localisation"
+            : "Nom, Prenom, Email"
+        }
       />
     );
   }, [filterText, resetPaginationToggle]);

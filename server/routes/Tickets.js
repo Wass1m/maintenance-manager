@@ -17,6 +17,7 @@ var ticketsController = require("../controllers/Tickets");
 router.post("/create/:ressourceID", ticketsController.createTicket);
 router.get("/get", respoAuth, ticketsController.getTicketByResponsable);
 router.get("/getTicketById/:ticketID", ticketsController.getTicketById);
+router.get("/solve/:ticketID", respoAuth, ticketsController.resoudreTicket);
 
 ////////////  SUPPRESSION ANOMALIE
 // router.delete(

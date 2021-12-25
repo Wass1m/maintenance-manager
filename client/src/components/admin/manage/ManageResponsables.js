@@ -23,7 +23,6 @@ const ManageResponsables = ({
 
   const closeModal = () => {
     setModal(false);
-    console.log(modal);
   };
 
   var users = [
@@ -80,7 +79,7 @@ const ManageResponsables = ({
   ) : (
     <div>
       <button onClick={handleModal} className="button">
-        Ajouter un responsable
+        {modal ? "Annuler" : "Ajouter un responsable"}
       </button>
       {modal ? (
         <Modal>

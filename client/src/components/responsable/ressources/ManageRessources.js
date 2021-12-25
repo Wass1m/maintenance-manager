@@ -139,7 +139,7 @@ const ManageRessources = ({
       ) : (
         <></>
       )}
-      <PagedTable data={ressourcesData} columns={columns} />
+      <PagedTable data={ressourcesData} columns={columns} type={"ressource"} />
       {/* <DataTables
         data={users}
         headers={["NUMERO", "PRENOM", "NOM", "EMAIL", "DATE CREATION", "ROLE"]}

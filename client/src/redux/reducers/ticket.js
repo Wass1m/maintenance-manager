@@ -1,14 +1,14 @@
 import {
-  GET_ONE_RESSOURCE,
-  GET_RESSOURCES,
-  GET_RESSOURCES_FAIL,
-  LOADING_RESPO,
+  GET_TICKET,
+  GET_TICKETS_FAIL,
+  GET_TICKETS,
+  LOADING,
   LOGOUT,
 } from "../actions/types";
 
 const initialState = {
-  ressources: [],
-  ressource: null,
+  tickets: [],
+  ticket: null,
   loading: false,
   error: "",
 };
@@ -16,30 +16,30 @@ const initialState = {
 export default function (state = initialState, action) {
   const { payload, type } = action;
   switch (type) {
-    case LOADING_RESPO:
+    case LOADING:
       return {
         ...state,
         loading: true,
       };
-    case GET_RESSOURCES:
+    case GET_TICKETS:
       return {
         ...state,
         loading: false,
-        ressources: payload.allRessources,
+        tickets: payload.allTickets,
         error: "",
       };
-    case GET_RESSOURCES_FAIL:
+    case GET_TICKETS_FAIL:
       return {
         ...state,
         loading: false,
-        ressources: [],
+        tickets: [],
         error: payload,
       };
-    case GET_ONE_RESSOURCE:
+    case GET_TICKET:
       return {
         ...state,
         loading: false,
-        ressource: payload,
+        ticket: payload.ticket,
         error: "",
       };
 
@@ -47,9 +47,9 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-
+        tickets: [],
         error: "",
-        ressource: null,
+        ticket: null,
       };
 
     default:

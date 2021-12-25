@@ -42,15 +42,13 @@ export const loginUser = (formData) => async (dispatch) => {
     header: { "content-type": "application/json" },
   };
 
-  console.log(formData);
-
   try {
     dispatch({
       type: LOADING,
     });
 
     const res = await axiosInstance.post("/users/login", formData, config);
-    console.log(res.token);
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
@@ -71,18 +69,24 @@ export const loadUser = () => async (dispatch) => {
     config.headers.Authorization = token ? `Bearer ${token}` : "";
     return config;
   });
+  const isToken = localStorage.getItem("token");
+  if (isToken) {
+    try {
+      dispatch({
+        type: LOADING,
+      });
 
-  try {
-    const res = await axiosInstance.get("/users/me");
+      const res = await axiosInstance.get("/users/me");
 
-    dispatch({
-      type: LOAD_USER,
-      payload: res.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: LOGIN_FAIL,
-    });
+      dispatch({
+        type: LOAD_USER,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+    }
   }
 };
 
