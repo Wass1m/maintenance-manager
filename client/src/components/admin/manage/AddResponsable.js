@@ -15,7 +15,6 @@ const AddResponsable = ({
     formState: { errors },
   } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
     addResponsable(data);
     endModal();
   };

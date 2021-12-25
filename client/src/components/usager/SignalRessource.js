@@ -123,52 +123,6 @@ const SignalRessource = ({
                 </label>
               </div>
             ))}
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto,
-                placeat.
-              </label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
-                molestias.
-              </label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">lol</label>
-            </div>
-            <div className="check-field">
-              <input type="checkbox" className="waitcheckb" />
-              <label className="form-check-label">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-                rerum accusamus ad veritatis ex repudiandae consequuntur! Iste
-                perspiciatis modi asperiores.
-              </label>
-            </div>
           </ul>
         </div>
         {isCaptcha ? (

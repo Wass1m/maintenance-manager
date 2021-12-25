@@ -120,8 +120,6 @@ export const getRessourcesById = (ressourceID) => async (dispatch) => {
       config
     );
 
-    console.log(res.data);
-
     dispatch({
       type: GET_ONE_RESSOURCE,
       payload: res.data,

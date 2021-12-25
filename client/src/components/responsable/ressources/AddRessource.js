@@ -15,7 +15,6 @@ const AddRessource = ({
     formState: { errors },
   } = useForm();
   const handleDone = (data) => {
-    console.log(data);
     addRessource(data, endModal);
   };
 

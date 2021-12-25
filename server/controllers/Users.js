@@ -196,16 +196,26 @@ var initApp = async (req, res) => {
       // Creation du compte admin
 
       let password = "Admin2021";
+      let password2 = "Respo2021";
 
       const salt = await bcrypt.genSalt(10);
       let hashedPassword = await bcrypt.hash(password, salt);
+      let hashedRespoPassword = await bcrypt.hash(password2, salt);
 
-      let newUser = await Users.create({
+      let newAdmin = await Users.create({
         firstName: "admin",
         lastName: "",
         email: "mgprojetweb@univ-rouen.fr",
         password: hashedPassword,
         role: "admin",
+      });
+
+      let newRespo = await Users.create({
+        firstName: "Bob",
+        lastName: "Maintainer",
+        email: "bob@univ-rouen.fr",
+        password: hashedRespoPassword,
+        role: "responsable",
       });
     }
   } catch (error) {

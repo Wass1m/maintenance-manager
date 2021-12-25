@@ -5,8 +5,6 @@ const DataTables = ({ data, headers, mainTab, secondaryTab }) => {
   if (!mainTab && !secondaryTab) {
     const columns = data[0] && Object.keys(data[0]);
 
-    console.log(columns);
-
     return (
       <table cellPadding={0} cellSpacing={0}>
         <thead>

@@ -13,7 +13,6 @@ const RegisterUser = ({ auth, registerUser }) => {
     formState: { errors },
   } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
     registerUser(data);
   };
 
