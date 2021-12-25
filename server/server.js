@@ -5,6 +5,8 @@ const { initApp } = require("./controllers/Users");
 // parser les jsons
 app.use(express.json());
 
+app.use(express.static(__dirname + "/public"));
+
 //routes
 
 const userRoutes = require("./routes/Users");

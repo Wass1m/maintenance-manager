@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 
 import { connect } from "react-redux";
@@ -8,7 +8,10 @@ import { logoutUser } from "../../redux/actions/authentification";
 const Header = ({ auth, logoutUser }) => {
   const logOut = () => {
     logoutUser();
+    navigate("/");
   };
+
+  let navigate = useNavigate();
 
   return (
     <header className="app-header">
