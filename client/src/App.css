@@ -439,6 +439,7 @@ td {
   flex-direction: column;
   margin: 40px 0;
   max-width: 800px;
+  width: 800px;
   border: 3px solid var(--primary-color);
   border-radius: 10px;
 }
@@ -542,6 +543,10 @@ td {
   margin-top: 20px;
   font-size: 40px;
   cursor: pointer;
+}
+
+.qr-image {
+  width: 200px;
 }
 
 @media print {
