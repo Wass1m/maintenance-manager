@@ -32,7 +32,7 @@ const PageQR = ({
           <QRCode
             size="150"
             className="qr-image"
-            value={`${REACT_APP_URL}signaler/${ressourceID}`}
+            value={`${process.env.REACT_APP_URL}signaler/${ressourceID}`}
           />
 
           <div className="qr-infos">
@@ -40,7 +40,7 @@ const PageQR = ({
               <h1>Flashez-moi</h1>
               <h4>Pour rapporter un problème avec ce materiel</h4>
             </div>
-            <div className="qr-url">{`${REACT_APP_URL}signaler/${ressourceID}`}</div>
+            <div className="qr-url">{`${process.env.REACT_APP_URL}signaler/${ressourceID}`}</div>
           </div>
         </div>
       </div>
