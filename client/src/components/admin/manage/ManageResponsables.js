@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import DataTables from "../../common/DataTables";
 import PagedTable from "../../common/PagedTable";
-import { getResponsables } from "../../../redux/actions/admin";
+import {
+  getResponsables,
+  deleteResponsable,
+} from "../../../redux/actions/admin";
 import { connect } from "react-redux";
 import Loading from "../../common/Loading";
 import Modal from "../../common/Modal";
@@ -9,6 +12,7 @@ import AddResponsable from "./AddResponsable";
 
 const ManageResponsables = ({
   getResponsables,
+  deleteResponsable,
   admin: { responsables, loading },
 }) => {
   useEffect(() => {
@@ -16,6 +20,8 @@ const ManageResponsables = ({
   }, []);
 
   const [modal, setModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [respoToDelete, setRespoToDelete] = useState(-1);
 
   const handleModal = () => {
     setModal(!modal);
@@ -23,6 +29,26 @@ const ManageResponsables = ({
 
   const closeModal = () => {
     setModal(false);
+  };
+
+  const handleDeleteState = (state) => {
+    setDeleteModal(state);
+  };
+
+  const handleDelete = (respoID) => {
+    setRespoToDelete(respoID);
+    handleDeleteState(true);
+  };
+
+  const confirmDelete = () => {
+    handleDeleteState(false);
+    deleteResponsable(respoToDelete);
+    setRespoToDelete(-1);
+  };
+
+  const cancelDelete = () => {
+    handleDeleteState(false);
+    setRespoToDelete(-1);
   };
 
   var users = [
@@ -70,7 +96,21 @@ const ManageResponsables = ({
     },
     {
       name: "Action",
-      selector: (row) => <button className="med-button">Supprimer</button>,
+      selector: (row) =>
+        deleteModal && row.id == respoToDelete ? (
+          <>
+            <button onClick={confirmDelete} className="small-button confirm">
+              Confirmer
+            </button>
+            <button onClick={cancelDelete} className="small-button cancel">
+              Annuler
+            </button>
+          </>
+        ) : (
+          <button onClick={() => handleDelete(row.id)} className="med-button">
+            Supprimer
+          </button>
+        ),
     },
   ];
 
@@ -101,6 +141,6 @@ const mapStateToProps = (state) => ({
   admin: state.admin,
 });
 
-export default connect(mapStateToProps, { getResponsables })(
+export default connect(mapStateToProps, { getResponsables, deleteResponsable })(
   ManageResponsables
 );

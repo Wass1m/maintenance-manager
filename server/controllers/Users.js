@@ -124,10 +124,6 @@ var getCurrentUser = async (req, res) => {
   }
 };
 
-var iAM = (req, res) => {
-  res.send("I AM INVINCIBLE");
-};
-
 // Responsables de maintenances !
 
 // Administrateurs !
@@ -243,12 +239,29 @@ var getResponsables = async (req, res) => {
   }
 };
 
+// SUPPRESSION d'un responsable
+
+var deleteResponsables = async (req, res) => {
+  try {
+    let responsable = await Users.destroy({
+      where: {
+        id: req.params.respoID,
+      },
+    });
+
+    return res.json({ message: "Responsable supprimee", responsable });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
+
 module.exports = {
   createUser,
   loginUser,
-  iAM,
+
   createResponsable,
   initApp,
   getCurrentUser,
   getResponsables,
+  deleteResponsables,
 };

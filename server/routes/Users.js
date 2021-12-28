@@ -33,21 +33,21 @@ router.post(
   userController.createResponsable
 );
 
+////////////  ROUTE D'OBTENTION DE TOUS LES RESPONSABLES
+
 router.get("/admin/getResponsables", adminAuth, userController.getResponsables);
+
+////////////  ROUTE DE SUPPRESSION D'UN RESPONSABLE
+
+router.delete(
+  "/admin/deleteResponsables/:respoID",
+  adminAuth,
+  userController.deleteResponsables
+);
 
 ////// INTIALISATION DE L'APPLICATION
 
 router.post("/initA", userController.initApp);
-
-//////////
-//////////
-//////////
-//////////
-////////// ROUTES RESPONSABLE MAINTENANCE
-
-router.post("/responsable/login", userAuth, userController.iAM);
-
-////////////  ROUTE D'AUTHENTIFICATION ADMIN
 
 ////////////  OBTENTION DE L'UTILISATEUR ACTUEL SUIVANT LE TOKEN
 router.get("/me", currentAuth, userController.getCurrentUser);

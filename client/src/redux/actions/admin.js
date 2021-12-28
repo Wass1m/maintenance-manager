@@ -69,3 +69,34 @@ export const addResponsable = (formData) => async (dispatch) => {
     });
   }
 };
+
+export const deleteResponsable = (respoID) => async (dispatch) => {
+  axiosInstance.interceptors.request.use(function (config) {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    return config;
+  });
+
+  const config = {
+    header: { "content-type": "application/json" },
+  };
+
+  try {
+    dispatch({
+      type: LOADING_ADMIN,
+    });
+
+    await axiosInstance.delete(
+      `/users/admin/deleteResponsables/${respoID}`,
+      {},
+      config
+    );
+
+    dispatch(getResponsables());
+  } catch (error) {
+    dispatch({
+      type: GET_RESPONSABLES_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};

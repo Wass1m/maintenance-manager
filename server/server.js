@@ -9,7 +9,7 @@ app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.static(__dirname + "/public"));
 
-//routes
+// intialisation des routes
 
 const userRoutes = require("./routes/Users");
 const ressourcesRoutes = require("./routes/Ressources");

@@ -40,6 +40,8 @@ router.get(
   ressourceController.getRessourceByID
 );
 
+////////////  LISTER TOUTES LES RESSOURCES POUR LE SIGNALEMENT D'UN UTILISATEUR
+
 router.get(
   "/getAll",
 

@@ -15,16 +15,16 @@ var ticketsController = require("../controllers/Tickets");
 
 ////////////  CREATION ANOMALIE
 router.post("/create/:ressourceID", ticketsController.createTicket);
+////////////  LISTER LES TICKET D;UN RESPONSABLE
 router.get("/get", respoAuth, ticketsController.getTicketByResponsable);
-router.get("/getTicketById/:ticketID", ticketsController.getTicketById);
+////////////  LISTER UN TICKET PAR ID
+router.get(
+  "/getTicketById/:ticketID",
+  respoAuth,
+  ticketsController.getTicketById
+);
+////////////  RESOUDRE UN TICKET D'ANOMALIE
 router.get("/solve/:ticketID", respoAuth, ticketsController.resoudreTicket);
-
-////////////  SUPPRESSION ANOMALIE
-// router.delete(
-//   "/delete/:anomalieID",
-//   respoAuth,
-//   anomalieController.deleteAnomalie
-// );
 
 // Exporting Routes
 module.exports = router;

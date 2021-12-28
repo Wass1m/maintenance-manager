@@ -25,15 +25,14 @@ router.delete(
 router.get(
   "/getAnomalies",
 
-  anomalieController.createAnomalie
+  anomalieController.getAnomaliesByRessource
 );
 ////////////  OBTENIR UNE RESSOURCE PAR ID POUR UN RESPONSABLE
 router.get(
   "/getAnomalieByID/:anomalieID",
 
-  anomalieController.createAnomalie
+  anomalieController.getAnomalieByID
 );
-// router.post("/delete", userController.loginUser);
 
 // Exporting Routes
 module.exports = router;
