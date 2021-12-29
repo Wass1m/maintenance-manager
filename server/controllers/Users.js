@@ -201,7 +201,7 @@ var initApp = async (req, res) => {
       let newAdmin = await Users.create({
         firstName: "admin",
         lastName: "",
-        email: "mgprojetweb@univ-rouen.fr",
+        email: "admin@univ-rouen.fr",
         password: hashedPassword,
         role: "admin",
       });
